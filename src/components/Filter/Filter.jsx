@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { contactsSearchAction } from 'redux/filterSlice';
-import { selectFilter } from 'redux/selectors';
+import { contactsSearchAction } from 'redux/filter/filterSlice';
+import { selectFilter } from 'redux/filter/filter.selectors';
 
 import { Box } from '../Box';
 import { Input, Label } from './Filter.styled';

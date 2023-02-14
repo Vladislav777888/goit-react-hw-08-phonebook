@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { nanoid } from '@reduxjs/toolkit';
 
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/contacts.selectors';
 
-import { Input, Button, Label, Form } from './ContactForm.styled';
+import {
+  StyledInput,
+  StyledButton,
+  StyledLabel,
+  StyledForm,
+} from './ContactForm.styled';
 
 export function ContactForm() {
   const [contactName, setContactName] = useState('');
@@ -42,7 +47,7 @@ export function ContactForm() {
     const contact = {
       id: nanoid(),
       name: name.value,
-      phone: number.value,
+      number: number.value,
     };
 
     const contactsInclude = contacts.some(el => el.name === name.value);
@@ -62,10 +67,10 @@ export function ContactForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Label>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledLabel>
           Name
-          <Input
+          <StyledInput
             type="text"
             name="name"
             value={contactName}
@@ -74,11 +79,11 @@ export function ContactForm() {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </Label>
+        </StyledLabel>
 
-        <Label>
+        <StyledLabel>
           Number
-          <Input
+          <StyledInput
             type="tel"
             name="number"
             value={contactNumber}
@@ -87,10 +92,10 @@ export function ContactForm() {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </Label>
+        </StyledLabel>
 
-        <Button type="submit">Add contact</Button>
-      </Form>
+        <StyledButton type="submit">Add contact</StyledButton>
+      </StyledForm>
     </>
   );
 }

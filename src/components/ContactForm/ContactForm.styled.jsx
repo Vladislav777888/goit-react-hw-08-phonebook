@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+export const StyledInput = styled.input`
   display: block;
   margin-top: 3px;
   padding: 5px 15px;
 `;
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   margin-top: 10px;
 
   display: inline-flex;
@@ -18,7 +18,7 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const Label = styled.label`
+export const StyledLabel = styled.label`
   display: block;
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};
@@ -28,6 +28,6 @@ export const Label = styled.label`
   }
 `;
 
-export const Form = styled.form`
+export const StyledForm = styled.form`
   margin-top: 10px;
 `;

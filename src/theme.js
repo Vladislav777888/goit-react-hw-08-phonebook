@@ -1,20 +1,16 @@
-import { extendTheme } from '@chakra-ui/react';
+// import { extendTheme } from '@chakra-ui/react';
 
 export const theme = {
   colors: {
     black: '#000',
     white: '#fff',
-    green: '#00ce00',
-    red: '#fb1a1a',
-    text: '#2a2a2ab3',
+    text: '#2a2a2a',
     background: '#fff',
-    backgroundSecondary: '#e0e4e8',
-    backgroundForm: 'antiquewhite',
-    borderColor: '#b8b2b2b3',
-    primary: '#4299e1',
-    secondary: '#fbd38d',
+    blue: '#07c',
+    secondary: '#05a',
     accent: '#609',
     muted: '#f6f6f6',
+    yellow: '#f5e614',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -26,6 +22,7 @@ export const theme = {
     xs: '12px',
     s: '14px',
     m: '16px',
+    ml: '20px',
     l: '32px',
     xl: '64px',
   },
@@ -43,28 +40,12 @@ export const theme = {
   },
   radii: {
     none: '0',
-    sm: '4px',
-    md: '8px',
-    lg: '16px',
+    normal: '4px',
     round: '50%',
   },
 };
 
-const colors = {
-  brand: {
-    900: '#024fc9',
-    800: '#146af5',
-    700: '#2977f2',
-    600: '#337df2',
-    500: '#4287f5',
-  },
-};
-const fonts = {
-  body: 'Tahoma',
-  heading: 'Courier New',
-};
-
-export const chakraThemePallets = extendTheme({
-  colors,
-  fonts,
-});
+// export const chakraThemePallets = extendTheme({
+//   colors: theme.colors,
+//   fonts: theme.fonts,
+// });
