@@ -2,16 +2,18 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { nanoid } from '@reduxjs/toolkit';
+import {
+  Box,
+  Button,
+  FormControl,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Stack,
+} from '@chakra-ui/react';
 
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/contacts.selectors';
-
-import {
-  StyledInput,
-  StyledButton,
-  StyledLabel,
-  StyledForm,
-} from './ContactForm.styled';
 
 export function ContactForm() {
   const [contactName, setContactName] = useState('');
@@ -44,22 +46,41 @@ export function ContactForm() {
       elements: { number, name },
     } = evt.target;
 
+    if (name.value.trim() === '') {
+      setContactName('');
+      return toast.warning('Form fields must not be empty', {
+        autoClose: 1500,
+      });
+    }
+
+    if (number.value.trim() === '') {
+      setContactNumber('');
+      return toast.warning('Form fields must not be empty', {
+        autoClose: 1500,
+      });
+    }
+
     const contact = {
       id: nanoid(),
       name: name.value,
-      number: number.value,
+      number: '+380-' + number.value,
     };
 
     const contactsInclude = contacts.some(el => el.name === name.value);
 
     if (contactsInclude) {
-      toast.error(`${name.value} is already in contacts`);
+      toast.error(`${name.value} is already in contacts`, {
+        autoClose: 1500,
+      });
       setContactName('');
       setContactNumber(number.value);
       return;
     }
 
     dispatch(addContact(contact));
+    toast.success(`${name.value} add to your contacts`, {
+      autoClose: 1500,
+    });
 
     setContactNumber('');
     setContactName('');
@@ -67,35 +88,39 @@ export function ContactForm() {
 
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledLabel>
-          Name
-          <StyledInput
+      <FormControl as="form" onSubmit={handleSubmit} autoComplete="off">
+        <Stack spacing="10px">
+          <Input
             type="text"
             name="name"
+            id="name"
+            placeholder="Name"
+            variant="outline"
             value={contactName}
             onChange={handleInputChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
+            w="300px"
           />
-        </StyledLabel>
 
-        <StyledLabel>
-          Number
-          <StyledInput
-            type="tel"
-            name="number"
-            value={contactNumber}
-            onChange={handleInputChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </StyledLabel>
+          <InputGroup w="300px">
+            <InputLeftAddon children="+380" />
+            <Input
+              type="tel"
+              name="number"
+              id="number"
+              placeholder="Phone number"
+              variant="outline"
+              value={contactNumber}
+              onChange={handleInputChange}
+            />
+          </InputGroup>
 
-        <StyledButton type="submit">Add contact</StyledButton>
-      </StyledForm>
+          <Box display="flex" justifyContent="center" w="300px">
+            <Button type="submit" maxW="100px" colorScheme="yellow" mt="20px">
+              Add contact
+            </Button>
+          </Box>
+        </Stack>
+      </FormControl>
     </>
   );
 }

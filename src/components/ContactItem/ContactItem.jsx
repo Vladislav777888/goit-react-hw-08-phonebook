@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Avatar, Button, Link, Stack, Text } from '@chakra-ui/react';
 
 import { deleteContact } from 'redux/contacts/operations';
-import {
-  ListItem,
-  ContactsText,
-  ContactsNumber,
-  Button,
-} from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -17,13 +12,28 @@ export const ContactItem = ({ id, name, number }) => {
   };
 
   return (
-    <ListItem key={id}>
-      <ContactsText>{name}:</ContactsText>
-      <ContactsNumber>{number}</ContactsNumber>
-      <Button type="button" onClick={handleDelete}>
+    <Stack direction={'row'} spacing="20px" alignItems={'center'} as="li">
+      <Avatar
+        justifyContent={'center'}
+        boxSize="20px"
+        bg={'green.400'}
+        _hover={{ bg: '#f08282' }}
+      />
+      <Text color="red" fontWeight="bold" ml="30px" w="500px">
+        {name}:{' '}
+        <Link href="tel:+{number} " color="teal.500">
+          {number}
+        </Link>
+      </Text>
+      <Button
+        colorScheme="yellow"
+        variant="solid"
+        onClick={handleDelete}
+        h="25px"
+      >
         Delete
       </Button>
-    </ListItem>
+    </Stack>
   );
 };
 

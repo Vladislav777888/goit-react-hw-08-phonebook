@@ -1,13 +1,26 @@
 import { Helmet } from 'react-helmet-async';
+import { Box, Container } from '@chakra-ui/react';
+
 import { RegisterForm } from 'components/RegisterForm';
 
 export default function Register() {
   return (
-    <div>
+    <>
       <Helmet>
         <title>Registration</title>
       </Helmet>
-      <RegisterForm />
-    </div>
+      <Box as="section">
+        <Container
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          maxW="350px"
+          py="6"
+        >
+          <RegisterForm />
+        </Container>
+      </Box>
+    </>
   );
 }

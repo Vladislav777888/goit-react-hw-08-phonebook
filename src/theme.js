@@ -1,11 +1,8 @@
-// import { extendTheme } from '@chakra-ui/react';
-
 export const theme = {
   colors: {
     black: '#000',
     white: '#fff',
     text: '#2a2a2a',
-    background: '#fff',
     blue: '#07c',
     secondary: '#05a',
     accent: '#609',
@@ -23,6 +20,7 @@ export const theme = {
     s: '14px',
     m: '16px',
     ml: '20px',
+    md: '24px',
     l: '32px',
     xl: '64px',
   },
@@ -44,8 +42,3 @@ export const theme = {
     round: '50%',
   },
 };
-
-// export const chakraThemePallets = extendTheme({
-//   colors: theme.colors,
-//   fonts: theme.fonts,
-// });
