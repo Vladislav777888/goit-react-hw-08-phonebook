@@ -10,13 +10,13 @@ export default function Home() {
   const shouldShown = isLoggedIn && !isRefreshing;
 
   return (
-    <Box as="section" backgroundColor="#f0f3d6">
+    <Box as="section">
       <Container
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        maxW="500px"
+        maxW="650px"
         minHeight={'calc(100vh - 84px)'}
       >
         <Heading textAlign={'center'} mb={8} as={'h1'}>
