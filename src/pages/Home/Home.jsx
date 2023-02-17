@@ -16,7 +16,7 @@ export default function Home() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        maxW="650px"
+        maxW="500px"
         minHeight={'calc(100vh - 84px)'}
       >
         <Heading textAlign={'center'} mb={8} as={'h1'}>
